@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="files-create-table" author="javharbek">
+        <createTable tableName="files">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_files_id"/>
+            </column>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="source_type" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(4096)"/>
+            <column name="file_type" type="VARCHAR(45)"/>
+            <column name="movies_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="movies_id"
+                                 baseTableName="files"
+                                 constraintName="fk-files-movies_id-movies-id"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="movies"
+                                 validate="true"/>
+    </changeSet>
+</databaseChangeLog>

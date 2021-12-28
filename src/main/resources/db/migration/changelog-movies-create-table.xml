@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="movies-create-table" author="javharbek">
+        <createTable tableName="movies">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_id"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="release_date" type="DATE"/>
+            <column name="certification" type="VARCHAR(45)"/>
+            <column name="runtime" type="TIME"/>
+            <column name="user_score" type="BIGINT"/>
+            <column name="tagline" type="VARCHAR(255)"/>
+            <column name="overview" type="TEXT"/>
+            <column name="title_source" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(45)"/>
+            <column name="lang" type="VARCHAR(45)"/>
+            <column name="budget" type="DOUBLE"/>
+            <column name="fees" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

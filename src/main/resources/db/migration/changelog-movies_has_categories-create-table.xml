@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="movies_has_categories-create-table" author="javharbek">
+        <createTable tableName="movies_has_categories">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_movies_has_categories_id"/>
+            </column>
+            <column name="movies_id" type="BIGINT"/>
+            <column name="categories_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="movies_id"
+                                 baseTableName="movies_has_categories"
+                                 constraintName="fk-movies_has_categories-movies_id-movies-id"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="movies"
+                                 validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="categories_id"
+                                 baseTableName="movies_has_categories"
+                                 constraintName="fk-movies_has_categories-categories_id-categories-id"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categories"
+                                 validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>
